@@ -9,20 +9,21 @@
 import UIKit
 
 enum AppControllerType: String {
-    case drawing = "drawing"
+    case drawing = "rysowanie"
+    case planes = "płaszczyzny"
 }
 
 class TableViewController: UITableViewController {
 
     let cellReuseableIdentifier = "cell"
-    let options: [AppControllerType] = [.drawing]
-    
+    let options: [AppControllerType] = [.drawing, .planes]
+
     override func viewDidLoad() {
         self.tableView!.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseableIdentifier)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return options.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,6 +37,9 @@ class TableViewController: UITableViewController {
         switch(options[indexPath.row]) {
         case .drawing:
             self.navigationController?.pushViewController(DrawController(), animated: true)
+        case .planes:
+            self.navigationController?.pushViewController(PlanesController(), animated: true)
         }
+
     }
 }
