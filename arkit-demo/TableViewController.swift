@@ -11,15 +11,18 @@ import UIKit
 enum AppControllerType: String {
     case drawing = "rysowanie"
     case planes = "płaszczyzny"
+    case hitTest = "hit test"
 }
 
 class TableViewController: UITableViewController {
 
     let cellReuseableIdentifier = "cell"
-    let options: [AppControllerType] = [.drawing, .planes]
+    let options: [AppControllerType] = [.drawing, .planes, .hitTest]
 
     override func viewDidLoad() {
         self.tableView!.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseableIdentifier)
+        self.title = "ARKit demo"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Powrót", style: .plain, target: nil, action: nil)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,6 +42,8 @@ class TableViewController: UITableViewController {
             self.navigationController?.pushViewController(DrawController(), animated: true)
         case .planes:
             self.navigationController?.pushViewController(PlanesController(), animated: true)
+        case .hitTest:
+            self.navigationController?.pushViewController(HitTestController(), animated: true)
         }
 
     }

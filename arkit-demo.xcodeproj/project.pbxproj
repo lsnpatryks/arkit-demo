@@ -11,6 +11,7 @@
 		5E01232920602CEB001DE6CF /* GenericController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E01232820602CEB001DE6CF /* GenericController.swift */; };
 		5E01232B20602E90001DE6CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E01232A20602E90001DE6CF /* Extensions.swift */; };
 		5E40DA60206019A1009CCAE4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E40DA5F206019A1009CCAE4 /* TableViewController.swift */; };
+		5E5418B42061828E0020A0F0 /* HitTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5418B32061828E0020A0F0 /* HitTestController.swift */; };
 		5EF4937F205EAC370032B6FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4937E205EAC370032B6FE /* AppDelegate.swift */; };
 		5EF49381205EAC370032B6FE /* DrawController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF49380205EAC370032B6FE /* DrawController.swift */; };
 		5EF49386205EAC370032B6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF49385205EAC370032B6FE /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 		5E01232820602CEB001DE6CF /* GenericController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericController.swift; sourceTree = "<group>"; };
 		5E01232A20602E90001DE6CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5E40DA5F206019A1009CCAE4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		5E5418B32061828E0020A0F0 /* HitTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTestController.swift; sourceTree = "<group>"; };
 		5EF4937B205EAC370032B6FE /* arkit-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "arkit-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF4937E205EAC370032B6FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF49380205EAC370032B6FE /* DrawController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				5E01232820602CEB001DE6CF /* GenericController.swift */,
 				5EF49380205EAC370032B6FE /* DrawController.swift */,
 				5E012326206027C1001DE6CF /* PlanesController.swift */,
+				5E5418B32061828E0020A0F0 /* HitTestController.swift */,
 				5EF49385205EAC370032B6FE /* Assets.xcassets */,
 				5EF4938A205EAC370032B6FE /* Info.plist */,
 				5E01232A20602E90001DE6CF /* Extensions.swift */,
@@ -143,6 +146,7 @@
 				5E012327206027C1001DE6CF /* PlanesController.swift in Sources */,
 				5E01232B20602E90001DE6CF /* Extensions.swift in Sources */,
 				5EF49381205EAC370032B6FE /* DrawController.swift in Sources */,
+				5E5418B42061828E0020A0F0 /* HitTestController.swift in Sources */,
 				5E40DA60206019A1009CCAE4 /* TableViewController.swift in Sources */,
 				5E01232920602CEB001DE6CF /* GenericController.swift in Sources */,
 				5EF4937F205EAC370032B6FE /* AppDelegate.swift in Sources */,

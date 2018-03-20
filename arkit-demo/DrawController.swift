@@ -24,17 +24,16 @@ class DrawController: GenericController {
 
         // right button
         view.addSubview(drawButton)
-        drawButton.setTitle("draw", for: .normal)
+        drawButton.setTitle("rysuj", for: .normal)
         drawButton.setTitleColor(.black, for: .normal)
         drawButton.backgroundColor = UIColor.white
-        drawButton.addTarget(self, action: #selector(drawButtonPressed), for: .touchUpInside)
         drawButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             NSLayoutConstraint(item: drawButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
             NSLayoutConstraint(item: drawButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -20),
             NSLayoutConstraint(item: drawButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
-            NSLayoutConstraint(item: drawButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
+            NSLayoutConstraint(item: drawButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
             ])
 
         // reset button
@@ -49,7 +48,7 @@ class DrawController: GenericController {
             NSLayoutConstraint(item: resetButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
             NSLayoutConstraint(item: resetButton, attribute: .bottom, relatedBy: .equal, toItem: drawButton, attribute: .top, multiplier: 1, constant: -20),
             NSLayoutConstraint(item: resetButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
-            NSLayoutConstraint(item: resetButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
+            NSLayoutConstraint(item: resetButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
             ])
     }
 
@@ -64,10 +63,6 @@ class DrawController: GenericController {
                 self.drawSphere(position: position)
             }
         }
-    }
-    
-    @objc func drawButtonPressed() {
-
     }
 
     @objc func resetButtonPressed() {
