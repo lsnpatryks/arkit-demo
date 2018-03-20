@@ -12,12 +12,13 @@ enum AppControllerType: String {
     case drawing = "rysowanie"
     case planes = "płaszczyzny"
     case hitTest = "hit test"
+    case physics = "fizyka"
 }
 
 class TableViewController: UITableViewController {
 
     let cellReuseableIdentifier = "cell"
-    let options: [AppControllerType] = [.drawing, .planes, .hitTest]
+    let options: [AppControllerType] = [.drawing, .planes, .hitTest, .physics]
 
     override func viewDidLoad() {
         self.tableView!.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseableIdentifier)
@@ -44,6 +45,8 @@ class TableViewController: UITableViewController {
             self.navigationController?.pushViewController(PlanesController(), animated: true)
         case .hitTest:
             self.navigationController?.pushViewController(HitTestController(), animated: true)
+        case .physics:
+            self.navigationController?.pushViewController(PhysicsController(), animated: true)
         }
 
     }
