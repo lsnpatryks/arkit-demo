@@ -13,15 +13,20 @@ class GenericController: UIViewController, ARSCNViewDelegate {
 
     var sceneView = ARSCNView()
     var leftButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.debugOptions = []
+        sceneView.translatesAutoresizingMaskIntoConstraints = false
+        sceneView.delegate = self
+    }
 
     func addScene(configuration: ARWorldTrackingConfiguration) {
         // scene view
         view.addSubview(sceneView)
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin]
         sceneView.session.run(configuration, options: [])
-        sceneView.translatesAutoresizingMaskIntoConstraints = false
-        sceneView.delegate = self
-
+    
         NSLayoutConstraint.activate(
             [NSLayoutAttribute.top, NSLayoutAttribute.bottom, NSLayoutAttribute.right, NSLayoutAttribute.left].map {
                 NSLayoutConstraint(item: sceneView, attribute: $0, relatedBy: .equal, toItem: view, attribute: $0, multiplier: 1, constant: 0)

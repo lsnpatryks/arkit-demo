@@ -17,7 +17,7 @@ class PhysicsController: GenericController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.configuration.planeDetection = .horizontal
 
         addScene(configuration: configuration)
@@ -54,16 +54,20 @@ class PhysicsController: GenericController {
     }
 
     private func addSphere(position: SCNVector3) {
-        let sphereNode = SCNNode(geometry: SCNSphere(radius: 0.1))
-        sphereNode.position = position
-        sphereNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-        sphereNode.name = "sphere"
+        if let configuration = sceneView.session.configuration as? ARWorldTrackingConfiguration, configuration.planeDetection.contains(.horizontal) {
+            configuration.planeDetection = []
+            sceneView.session.run(configuration, options: [])
+            
+        }
+        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
+        let boxNode = SCNNode(geometry: box)
+        boxNode.position = position
+        boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        boxNode.name = "sphere"
+        boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: box, options: [:]))
 
-        let body = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(node: sphereNode,
-            options: [SCNPhysicsShape.Option.keepAsCompound: true]))
-        sphereNode.physicsBody = body
 
-        sceneView.scene.rootNode.addChildNode(sphereNode)
+        sceneView.scene.rootNode.addChildNode(boxNode)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -106,10 +110,21 @@ class PhysicsController: GenericController {
     }
 
     private func removePlanes() {
-        self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
-            if node.name == "plane" {
-                node.removeFromParentNode()
-            }
+        return
+//        self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
+//            if node.name == "plane" {
+//                node.removeFromParentNode()
+//            }
+//        }
+    }
+
+    @objc override func leftButtonPressed() {
+        if sceneView.debugOptions.contains(ARSCNDebugOptions.showWorldOrigin) {
+            sceneView.debugOptions = []
+            sceneView.showsStatistics = false
+        } else {
+            sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, .showPhysicsShapes]
+            sceneView.showsStatistics = true
         }
     }
 }

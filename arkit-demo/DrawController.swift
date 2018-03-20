@@ -18,7 +18,7 @@ class DrawController: GenericController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        sceneView.autoenablesDefaultLighting = false
         addScene(configuration: configuration)
         addLeftButtton()
 
