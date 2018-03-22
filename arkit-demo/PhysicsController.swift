@@ -57,7 +57,6 @@ class PhysicsController: GenericController {
         if let configuration = sceneView.session.configuration as? ARWorldTrackingConfiguration, configuration.planeDetection.contains(.horizontal) {
             configuration.planeDetection = []
             sceneView.session.run(configuration, options: [])
-            
         }
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         let boxNode = SCNNode(geometry: box)
@@ -65,8 +64,7 @@ class PhysicsController: GenericController {
         boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
         boxNode.name = "sphere"
         boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: box, options: [:]))
-
-
+        
         sceneView.scene.rootNode.addChildNode(boxNode)
     }
 
@@ -110,12 +108,11 @@ class PhysicsController: GenericController {
     }
 
     private func removePlanes() {
-        return
-//        self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
-//            if node.name == "plane" {
-//                node.removeFromParentNode()
-//            }
-//        }
+        self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
+            if node.name == "plane" {
+                node.removeFromParentNode()
+            }
+        }
     }
 
     @objc override func leftButtonPressed() {

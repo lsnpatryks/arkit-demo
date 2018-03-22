@@ -13,6 +13,9 @@
 		5E40DA60206019A1009CCAE4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E40DA5F206019A1009CCAE4 /* TableViewController.swift */; };
 		5E5418B42061828E0020A0F0 /* HitTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5418B32061828E0020A0F0 /* HitTestController.swift */; };
 		5E5418B620618B2A0020A0F0 /* PhysicsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5418B520618B2A0020A0F0 /* PhysicsController.swift */; };
+		5EF373492064688E00E6DB2A /* model2.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5EF373482064688E00E6DB2A /* model2.obj */; };
+		5EF3734B2064689A00E6DB2A /* model1.obj in Resources */ = {isa = PBXBuildFile; fileRef = 5EF3734A2064689A00E6DB2A /* model1.obj */; };
+		5EF3734D206468C200E6DB2A /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3734C206468C200E6DB2A /* ModelController.swift */; };
 		5EF4937F205EAC370032B6FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4937E205EAC370032B6FE /* AppDelegate.swift */; };
 		5EF49381205EAC370032B6FE /* DrawController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF49380205EAC370032B6FE /* DrawController.swift */; };
 		5EF49386205EAC370032B6FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF49385205EAC370032B6FE /* Assets.xcassets */; };
@@ -25,6 +28,9 @@
 		5E40DA5F206019A1009CCAE4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		5E5418B32061828E0020A0F0 /* HitTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTestController.swift; sourceTree = "<group>"; };
 		5E5418B520618B2A0020A0F0 /* PhysicsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsController.swift; sourceTree = "<group>"; };
+		5EF373482064688E00E6DB2A /* model2.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model2.obj; sourceTree = "<group>"; };
+		5EF3734A2064689A00E6DB2A /* model1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model1.obj; sourceTree = "<group>"; };
+		5EF3734C206468C200E6DB2A /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		5EF4937B205EAC370032B6FE /* arkit-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "arkit-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF4937E205EAC370032B6FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF49380205EAC370032B6FE /* DrawController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawController.swift; sourceTree = "<group>"; };
@@ -43,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5EF3734E2064697C00E6DB2A /* models */ = {
+			isa = PBXGroup;
+			children = (
+				5EF373482064688E00E6DB2A /* model2.obj */,
+				5EF3734A2064689A00E6DB2A /* model1.obj */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		5EF49372205EAC370032B6FE = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +77,7 @@
 		5EF4937D205EAC370032B6FE /* arkit-demo */ = {
 			isa = PBXGroup;
 			children = (
+				5EF3734E2064697C00E6DB2A /* models */,
 				5EF4937E205EAC370032B6FE /* AppDelegate.swift */,
 				5E40DA5F206019A1009CCAE4 /* TableViewController.swift */,
 				5E01232820602CEB001DE6CF /* GenericController.swift */,
@@ -69,6 +85,7 @@
 				5E012326206027C1001DE6CF /* PlanesController.swift */,
 				5E5418B32061828E0020A0F0 /* HitTestController.swift */,
 				5E5418B520618B2A0020A0F0 /* PhysicsController.swift */,
+				5EF3734C206468C200E6DB2A /* ModelController.swift */,
 				5EF49385205EAC370032B6FE /* Assets.xcassets */,
 				5EF4938A205EAC370032B6FE /* Info.plist */,
 				5E01232A20602E90001DE6CF /* Extensions.swift */,
@@ -136,6 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EF49386205EAC370032B6FE /* Assets.xcassets in Resources */,
+				5EF3734B2064689A00E6DB2A /* model1.obj in Resources */,
+				5EF373492064688E00E6DB2A /* model2.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +168,7 @@
 				5E012327206027C1001DE6CF /* PlanesController.swift in Sources */,
 				5E5418B620618B2A0020A0F0 /* PhysicsController.swift in Sources */,
 				5E01232B20602E90001DE6CF /* Extensions.swift in Sources */,
+				5EF3734D206468C200E6DB2A /* ModelController.swift in Sources */,
 				5EF49381205EAC370032B6FE /* DrawController.swift in Sources */,
 				5E5418B42061828E0020A0F0 /* HitTestController.swift in Sources */,
 				5E40DA60206019A1009CCAE4 /* TableViewController.swift in Sources */,
