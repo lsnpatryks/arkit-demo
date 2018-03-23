@@ -12,7 +12,6 @@ import ARKit
 class PhysicsController: GenericController {
 
     let configuration = ARWorldTrackingConfiguration()
-    let drawButton = UIButton()
     var position: SCNVector3?
 
     override func viewDidLoad() {
@@ -23,20 +22,7 @@ class PhysicsController: GenericController {
         addScene(configuration: configuration)
         addLeftButtton()
 
-        // right button
-        view.addSubview(drawButton)
-        drawButton.setTitle("dodaj", for: .normal)
-        drawButton.setTitleColor(.black, for: .normal)
-        drawButton.backgroundColor = UIColor.white
-        drawButton.translatesAutoresizingMaskIntoConstraints = false
-        drawButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: drawButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: drawButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: drawButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
-            NSLayoutConstraint(item: drawButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
-            ])
+        let _ = addRightButton(name: "dodaj", action: #selector(addButtonPressed))
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {

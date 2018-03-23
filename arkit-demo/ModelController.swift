@@ -14,8 +14,6 @@ import SceneKit.ModelIO
 class ModelController: GenericController {
 
     let configuration = ARWorldTrackingConfiguration()
-    let drawButton = UIButton()
-    var secondButton = UIButton()
     var position: SCNVector3?
     
     var object, secondObject: MDLObject?
@@ -31,35 +29,8 @@ class ModelController: GenericController {
         self.object = MDLAsset(url: URL(fileURLWithPath:  Bundle.main.path(forResource: "model1", ofType: "obj")!)).object(at: 0)
         self.secondObject = MDLAsset(url: URL(fileURLWithPath:  Bundle.main.path(forResource: "model2", ofType: "obj")!)).object(at: 0)
         
-        // right button
-        view.addSubview(drawButton)
-        drawButton.setTitle("nr 1", for: .normal)
-        drawButton.setTitleColor(.black, for: .normal)
-        drawButton.backgroundColor = UIColor.white
-        drawButton.translatesAutoresizingMaskIntoConstraints = false
-        drawButton.addTarget(self, action: #selector(addButtonPressed), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: drawButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: drawButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: drawButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
-            NSLayoutConstraint(item: drawButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
-            ])
-        
-        // reset button
-        view.addSubview(secondButton)
-        secondButton.setTitle("nr 2", for: .normal)
-        secondButton.setTitleColor(.black, for: .normal)
-        secondButton.backgroundColor = UIColor.white
-        secondButton.addTarget(self, action: #selector(secondButtonPressed), for: .touchUpInside)
-        secondButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: secondButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: secondButton, attribute: .bottom, relatedBy: .equal, toItem: drawButton, attribute: .top, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: secondButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
-            NSLayoutConstraint(item: secondButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
-            ])
+        let _ = self.addRightButton(name: "nr 1", action: #selector(addButtonPressed))
+        let _ = self.addRightButton(name: "nr 2", action: #selector(secondButtonPressed))
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {

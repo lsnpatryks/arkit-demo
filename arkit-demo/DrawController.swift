@@ -11,8 +11,8 @@ import ARKit
 
 class DrawController: GenericController {
 
-    var drawButton = UIButton()
-    var resetButton = UIButton()
+    var drawButton: UIButton?
+    var resetButton: UIButton?
 
     let configuration = ARWorldTrackingConfiguration()
 
@@ -22,34 +22,8 @@ class DrawController: GenericController {
         addScene(configuration: configuration)
         addLeftButtton()
 
-        // right button
-        view.addSubview(drawButton)
-        drawButton.setTitle("rysuj", for: .normal)
-        drawButton.setTitleColor(.black, for: .normal)
-        drawButton.backgroundColor = UIColor.white
-        drawButton.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: drawButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: drawButton, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: drawButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
-            NSLayoutConstraint(item: drawButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
-            ])
-
-        // reset button
-        view.addSubview(resetButton)
-        resetButton.setTitle("reset", for: .normal)
-        resetButton.setTitleColor(.black, for: .normal)
-        resetButton.backgroundColor = UIColor.white
-        resetButton.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
-        resetButton.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            NSLayoutConstraint(item: resetButton, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: resetButton, attribute: .bottom, relatedBy: .equal, toItem: drawButton, attribute: .top, multiplier: 1, constant: -20),
-            NSLayoutConstraint(item: resetButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
-            NSLayoutConstraint(item: resetButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
-            ])
+        self.drawButton = self.addRightButton(name: "rysuj", action: nil)
+        self.resetButton = self.addRightButton(name: "reset", action: #selector(resetButtonPressed))
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: TimeInterval) {
@@ -57,10 +31,12 @@ class DrawController: GenericController {
             return
         }
         DispatchQueue.main.async {
-            if self.drawButton.isHighlighted {
-                let transform = pointOfView.transform
-                let position = SCNVector3(-transform.m31 + transform.m41, -transform.m32 + transform.m42, -transform.m33 + transform.m43)
-                self.drawSphere(position: position)
+            if let button = self.drawButton {
+                if button.isHighlighted {
+                    let transform = pointOfView.transform
+                    let position = SCNVector3(-transform.m31 + transform.m41, -transform.m32 + transform.m42, -transform.m33 + transform.m43)
+                    self.drawSphere(position: position)
+                }
             }
         }
     }

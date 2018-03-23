@@ -13,7 +13,8 @@ class GenericController: UIViewController, ARSCNViewDelegate {
 
     var sceneView = ARSCNView()
     var leftButton = UIButton()
-    
+    var buttons: [UIButton] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneView.autoenablesDefaultLighting = true
@@ -26,7 +27,7 @@ class GenericController: UIViewController, ARSCNViewDelegate {
         // scene view
         view.addSubview(sceneView)
         sceneView.session.run(configuration, options: [])
-    
+
         NSLayoutConstraint.activate(
             [NSLayoutAttribute.top, NSLayoutAttribute.bottom, NSLayoutAttribute.right, NSLayoutAttribute.left].map {
                 NSLayoutConstraint(item: sceneView, attribute: $0, relatedBy: .equal, toItem: view, attribute: $0, multiplier: 1, constant: 0)
@@ -49,6 +50,39 @@ class GenericController: UIViewController, ARSCNViewDelegate {
             NSLayoutConstraint(item: leftButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
             NSLayoutConstraint(item: leftButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
             ])
+    }
+
+    func addRightButton(name: String, action: Selector?) -> UIButton {
+        let button = UIButton()
+        
+        view.addSubview(button)
+        button.setTitle(name, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = UIColor.white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        if let selector = action {
+            button.addTarget(self, action: selector, for: .touchUpInside)
+        }
+
+        if(buttons.count > 0){
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
+                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: buttons.last, attribute: .top, multiplier: 1, constant: -20),
+                NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
+                NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
+                ])
+        } else {
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint(item: button, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20),
+                NSLayoutConstraint(item: button, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -20),
+                NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70),
+                NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40),
+                ])
+        }
+        
+        buttons.append(button)
+        
+        return button;
     }
 
     @objc func leftButtonPressed() {
